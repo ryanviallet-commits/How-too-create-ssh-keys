@@ -1,0 +1,37 @@
+Standard operating procedure
+[MITT] 
+[30 Stephen Street] 
+[431-774-8852]
+Reversion info: 
+
+Approved Table: 
+
+Purpose
+[the purpose of this is too show how too make an SSH key on a linux server]
+Scope
+[this applies too people who want to learn how too create an ssh key so they can use ssh too connect there server from there command prompt]
+[this will show you step by step how too configure ssh on too your linux server, for this demonstration i will be using linux ubuntu.]
+Definitions
+[Define any unknown words or acronyms that can help the reader understand this SOP.]
+Procedure steps
+[Describe each step of the procedure and mention any known hazards or difficulties.]
+Step 1: you will first need too update your systems package repository listings using the command (sudo apt update)
+Step 2: then you will need too install the openSSH server package using the command (sudo apt install openssh-server -y)
+Step 3: Now you need too Enable the service using (sudo systemctl enable --now ssh)
+Step 4: Now you should verify that the SSH deamon is running using (sudo systemctl status ssh)
+Step 5: Now you need too configure the firewall, first allow ssh through the firewall using (sudo ufw allow ssh)
+Step 6: Then you need too turn on your firewall using (sudo ufw enable)
+Step 7: After that you can check the updated rule status too confirm that port 22 is open (sudo ufw status)
+Step 8: after setting up the firewall then you need too find and connect your IP Address, find the IP address using the command (ip a)
+Step 9:Nex step will be too open your terminal on your local device then too use command (ssh username@server_ip_address) that is an example u need too use your own credentials
+Step 10: you should secure your ssh enviroment using (ssh-keygen -t ed25519)
+Step 11: you can copy your new public keys directly too your server using (ssh-copy-id username@server_ip_address)
+Step 12 Access cli text editor using (sudo nano /etc/ssh/sshd_config)
+Step 13: then you need too deactivate your password logins changing (PasswordAuthentication no) and (PermitRootLogin no) in the text editor
+Step 14: Now you need too refresh the service deamon too enable your new security settings (sudo systemctl restart ssh)
+
+Reference or Related Documents
+https://ubuntu.com/server/docs/how-to/security/openssh-server/
+https://askubuntu.com/questions/51925/how-do-i-configure-a-new-ubuntu-installation-to-accept-ssh-connections
+https://dev.to/jajera/enabling-ssh-in-ubuntu-server-61b
+[Any other documents related to this SOP.]
