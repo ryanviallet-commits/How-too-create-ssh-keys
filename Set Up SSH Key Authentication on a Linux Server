@@ -1,4 +1,4 @@
-Standard operating procedure
+How too create ssh keys in a linux server
 [MITT] 
 [30 Stephen Street] 
 [431-774-8852]
@@ -7,7 +7,7 @@ Reversion info:
 Approved Table: 
 
 Purpose
-[the purpose of this is too show how too make an SSH key on a linux server]
+the purpose of this is too show how too make SSH keys on a linux server
 Scope
 [this applies too people who want to learn how too create an ssh key so they can use ssh too connect there server from there command prompt]
 [this will show you step by step how too configure ssh on too your linux server, for this demonstration i will be using linux ubuntu.]
@@ -17,7 +17,7 @@ Procedure steps
 [Describe each step of the procedure and mention any known hazards or difficulties.]
 Step 1: you will first need too update your systems package repository listings using the command (sudo apt update)
 Step 2: then you will need too install the openSSH server package using the command (sudo apt install openssh-server -y)
-Step 3: Now you need too Enable the service using (sudo systemctl enable --now ssh)
+Step 3: Now you need too Enable the service using (sudo systemctl enable (--now ssh)
 Step 4: Now you should verify that the SSH deamon is running using (sudo systemctl status ssh)
 Step 5: Now you need too configure the firewall, first allow ssh through the firewall using (sudo ufw allow ssh)
 Step 6: Then you need too turn on your firewall using (sudo ufw enable)
