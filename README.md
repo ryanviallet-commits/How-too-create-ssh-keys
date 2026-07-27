@@ -1,0 +1,47 @@
+# How too create ssh keys in a Linux server
+
+## Purpose
+the purpose of this is too show how too make SSH keys on a Linux server so you can access the Linux cli from a local device  
+## Scope
+this applies too people who want to learn how too create an ssh key so they can use ssh too connect there server from there command prompt  
+this will show you step by step how too configure ssh on too your Linux server so you can securely access your servers cli from a local client, for this demonstration i will be using Linux ubuntu.  
+## Prerequisites
+what you will need in order too do this is a Linux server and a local device too ssh from.  
+## Definitions
+SSH -Secure shell  
+SSHD -Secure Shell Daemon  
+IP -Internet Protocol Address  
+UFW -Uncomplicated firewall  
+daemon -a background program that runs  independently of a users session and runs tasks network requests and system maintenance  
+  
+## Procedure steps
+Step 1: you will first need too update your systems package repository listings using the command (sudo apt update)  
+Step 2: then you will need too install the openSSH server package using the command (sudo apt install openssh-server -y)  
+Step 3: Now you need too Enable the service using (sudo systemctl enable --now ssh)  
+Step 4: Now you should verify that the SSH daemon is running using (sudo systemctl status ssh)  
+Step 5: Now you need too configure the firewall, first allow ssh through the firewall using (sudo ufw allow ssh)  
+Step 6: Then you need too turn on your firewall using (sudo ufw enable)  
+Step 7: After that you can check the updated rule status too confirm that port 22 is open (sudo ufw status)  
+Step 8: after setting up the firewall then you need too find and connect your IP Address, find the IP address using the command (Ip a)  
+Step 9: Next step will be too open your terminal on your local device then too use command (ssh username@server_ip_address) that is an example u need too use your own credentials  
+Step 10: you should secure your ssh environment using (ssh-keygen -t ed25519)  
+Step 11: you can copy your new public keys directly too your server using (ssh-copy-id username@server_ip_address)  
+Step 12 Access cli text editor using (sudo nano /etc/ssh/sshd_config)  
+Step 13: then you need too deactivate your password logins changing (PasswordAuthentication no) and (PermitRootLogin no) in the text editor  
+Step 14: Now you need too refresh the service daemon too enable your new security settings (sudo systemctl restart ssh)  
+Step 15: Now try doing ssh again and verify that it works  
+
+## Troubleshooting 
+to make sure everything is working smoothly these are some commands you can use  
+(sudo systemctl status ssh) this command will make sure that ssh is active and running  
+(systemctl is-enabled ssh) this command will show you that ssh is enabled  
+( sudo ss -tulpn | grep sshd) this command will verify your deamon is listening too the network connections and too see all the active ports  
+(sudo ufw status verbose) this command will make sure that firewalls are allowed to let ssh through  
+
+
+
+## Reference or Related Documents
+https://ubuntu.com/server/docs/how-to/security/openssh-server/  
+https://askubuntu.com/questions/51925/how-do-i-configure-a-new-ubuntu-installation-to-accept-ssh-connections  
+https://dev.to/jajera/enabling-ssh-in-ubuntu-server-61b  
+
